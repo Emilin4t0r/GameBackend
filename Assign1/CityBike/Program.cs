@@ -1,13 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Assign1
 {
     class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            Console.WriteLine(args[0]);
+            ICityBikeDataFetcher dataFetcher = new RealTimeCityBikeDataFetcher();
+            Task<int> task = dataFetcher.GetBikeCountInStation("Kesäkatu");
+            await task;
         }
     }
 }
